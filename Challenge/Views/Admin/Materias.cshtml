@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Materias";
+}
+
+<h2>Gestion Materias</h2>
+
+<div class="col-sm-5">
+
+    <input type="button" class="btn center-block" value="Crear Nueva Materia" onclick="location.href='@Url.Action("CrearMateria", "Admin")'" />
+</div>
+<div class="col-sm-5">
+
+    <input type="button" class="btn center-block" value="Modificar Materia" onclick="location.href='@Url.Action("ModificarMateria", "Admin")'" />
+</div>
+
+
+
+<div class="atras">
+    @Html.ActionLink("Atras", "Index")
+</div>

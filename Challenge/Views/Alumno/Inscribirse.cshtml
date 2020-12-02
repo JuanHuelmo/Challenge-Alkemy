@@ -1,0 +1,55 @@
+﻿@model Challenge.Models.Materia
+
+
+<h2>Inscribirse</h2>
+
+<div>
+    <h4>Materia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inscriptos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inscriptos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Realizar Inscripcion", "RealizarInscripcion", new { id = Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

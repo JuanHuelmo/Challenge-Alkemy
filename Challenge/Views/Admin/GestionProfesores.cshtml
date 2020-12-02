@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Gestion Profesores";
+}
+
+<h2>Gestion Profesores</h2>
+
+
+<div class="col-sm-5">
+
+    <input type="button" class="btn center-block" value="Crear Nuevo Profesor" onclick="location.href='@Url.Action("CrearDocente", "Admin")'" />
+</div>
+<div class="col-sm-5">
+
+    <input type="button" class="btn center-block" value="Modificar Docente" onclick="location.href='@Url.Action("ModificarDocente", "Admin")'" />
+</div>
+
+<div class="atras">
+    @Html.ActionLink("Atras", "Index")
+</div>

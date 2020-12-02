@@ -1,0 +1,121 @@
+﻿@model Challenge.Models.Materia
+@{
+    ViewBag.Title = "ModificarMateria";
+}
+
+<h2>Modificar Materia</h2>
+
+
+@if (@TempData["Mensaje"] != null)
+{
+    <div class="success">
+        <p>@TempData["Mensaje"]</p>
+    </div>
+}
+
+@if (ViewBag.Lista != null)
+{
+    <form action="/Admin/ModificarMateria" method="post">
+        <br />
+        <select name="idMateria" class="form-group input-propio">
+            <option value="-1">Seleccione una Materia </option>
+
+            @foreach (Challenge.Models.Materia m in ViewBag.Lista)
+            {
+                <option value="@m.Id">@m.Name </option>
+            }
+
+
+        </select>
+
+        <button class="btn btn-primary" type="submit">
+            Modificar
+        </button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+}
+
+@if(Model != null)
+    {
+
+
+        using (Html.BeginForm("GuardarModificacionMateria", "Admin", FormMethod.Post))
+        {
+@Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Materia</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeFrom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TimeFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeTo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeTo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TimeTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quota, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quota, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Inscriptos, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Inscriptos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Inscriptos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <select name="idDocente" class="form-group input-propio">
+            <option value="-1">Seleccione un Docente </option>
+
+            @foreach (Challenge.Models.Profesor p in ViewBag.ListaProfesor)
+            {
+                <option value="@p.id">@p.Name  @p.Lastname</option>
+            }
+
+
+        </select>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+        }
+}
+<div class="atras">
+    @Html.ActionLink("Atras", "Materias")
+</div>

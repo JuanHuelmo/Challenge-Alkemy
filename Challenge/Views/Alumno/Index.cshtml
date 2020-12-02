@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Challenge.Models.Materia>
+
+@if (@TempData["mensaje2"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@TempData["mensaje2"]</p>
+    </div>
+}
+
+@if (TempData["mensaje1"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <p>@TempData["mensaje1"]</p>
+    </div>
+}
+
+
+<h2>Lista Materias para Inscribir:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inscriptos)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inscriptos)
+            </td>
+            <td>
+                @Html.ActionLink("Inscribirse", "Inscribirse", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,58 @@
+﻿<h3>Login</h3>
+<div>
+    
+    @if (@TempData["mensaje2"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <p>@TempData["mensaje2"]</p>
+        </div>
+    }
+
+    @if (TempData["mensaje1"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@TempData["mensaje1"]</p>
+        </div>
+    }
+
+
+    <form action="/Home/Login" method="post">
+        <br />
+        <label>Nombre Usuario</label>
+        <input type="text" name="UserName" id="UserName" placeholder="Ejemplo: Adrian123" />
+        <br />
+        <label>Contraseña:</label>
+        <input type="password" name="Password" id="Password" placeholder="Contraseña" />
+        <br />
+        <select id="Usuario" name="Usuario" class="form-group input-propio">
+            <option value="-1">Seleccione Tipo Usuario </option>
+            <option value="1">Administrador </option>
+            <option value="2">Alumno</option>
+        </select>
+        <br />
+        <button class="btn btn-primary" type="submit" onclick="valida()">
+            Ingresar
+        </button>
+    </form>
+</div>
+<div>
+    @Html.ActionLink("Crear Alumno", "CrearAlumno","Alumno", null,null)
+</div>
+
+<script  type="text/javascript">
+
+    function valida() {
+        var i = document.getElementById("Usuario").value;
+
+        if (i != -1) {
+            return true;
+        } else {
+
+            alert("elegir Tipo Usuario");
+        }
+        if (document.getElementById("UserName").value == "" || document.getElementById("Password").value == "") {
+            alert("Ingrese un usuario, contraseña y tipo de Usuario");
+        }
+    }
+   
+</script>
